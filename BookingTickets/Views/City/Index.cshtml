@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BookingTickets.Models.City>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<p>
+    <a href="@Url.Action("AddEdit","City")" class="btn btn-success btn-sm">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CITYCODE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CITY_NAME)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.CITYCODE)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CITY_NAME)
+    </td>
+    <td>
+        <a href="@Url.Action("AddEdit","City",new { id=item.CITYID})" class="btn btn-default"> <i class="fa fa-pencil"></i>Edit</a>
+        <a onclick="Delete(@item.CITYID)" class="btn btn-default"><i class="fa fa-trash"></i>Delete</a>
+    </td>   
+</tr>
+        }
+
+</table>
+
+
+@section scripts{
+    <script>
+        $(function () {
+            var res = '@TempData["Response"]'
+            if (res != '')
+                alertify.success(res);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Web Api Delete Operations', 'Are you Sure to Delete this Records ?', function ()
+            {
+                window.location.href = '@Url.Action("Delete", "City")/' + id;
+            }, null);
+
+        }
+    </script>
+}
+

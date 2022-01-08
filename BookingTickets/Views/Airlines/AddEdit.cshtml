@@ -1,0 +1,40 @@
+﻿@model BookingTickets.Models.FLIGHT_COMPANY
+@{
+    ViewBag.Title = "AddEdit";
+}
+
+<br />
+<br />
+<br />
+<br />
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.CMPANYID)
+
+        
+        <div class="row">
+            <div class=" form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.COMPANY_NAME)
+                </div>
+                <div class="col-sm-4">
+                    @Html.EditorFor(model => model.COMPANY_NAME, new { htmlAttributes = new { @class = "form-control" }, })
+                    @Html.ValidationMessageFor(mode => Model.COMPANY_NAME)
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <input type="submit" value="Submit" class="btn btn-success btn-sm" />
+            <a href="@Url.Action("Index","Airlines")" class="btn btn-default btn-sm">Back To List</a>
+
+        </div>
+    }
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}

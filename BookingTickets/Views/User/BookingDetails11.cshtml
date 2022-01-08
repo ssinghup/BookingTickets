@@ -1,0 +1,103 @@
+﻿@model List<BookingTickets.Models.VM_TICKET_BOOKED>
+
+
+
+@{
+    ViewBag.Title = "BookingDetails";
+}
+<div class="page-section" style="padding-top:20px;font-size:12px;overflow-y:auto;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h5 style="padding:10px;"><b>Flight Booking Details</b></h5>
+                <table class="table">
+                    <tr>
+                        <th>
+                            FROM_CITYNAME
+                        </th>
+                        <th>
+                            TO_CITYNAME
+                        </th>
+                        <th>
+                            FLIGHT_NAME
+                        </th>
+                        <th>
+                            COMPANY_NAME
+                        </th>
+                        <th>
+                            BOOKING_DT
+                        </th>
+                        <th>
+                            BOOKING_DATE
+                        </th>
+                        @*<th>
+                            PERSON_NAME
+                            </th>
+                            <th>
+                            PERSON_AGE
+                            </th>
+                            <th>
+                            PERSON_EMAIL
+                            </th>
+                            <th>
+                            PERSON_MOBILE
+                            </th>*@
+                        <th>
+                            BOOKED_FARE
+                        </th>
+                        <th></th>
+                    </tr>
+
+
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FROM_CITYNAME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TO_CITYNAME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FLIGHT_NAME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.COMPANY_NAME)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BOOKING_DT)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BOOKING_DATE)
+                            </td>
+                            @*<td>
+                                @Html.DisplayFor(modelItem => item.PERSON_NAME)
+                                </td>
+                                <td>
+                                @Html.DisplayFor(modelItem => item.PERSON_AGE)
+                                </td>
+                                <td>
+                                @Html.DisplayFor(modelItem => item.PERSON_EMAIL)
+                                </td>
+                                <td>
+                                @Html.DisplayFor(modelItem => item.PERSON_MOBILE)
+                                </td>*@
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BOOKED_FARE)
+                            </td>
+                            @*<td>
+                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                </td>*@
+                        </tr>
+                    }
+
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

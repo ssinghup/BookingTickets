@@ -1,0 +1,50 @@
+﻿@model BookingTickets.Models.City
+    @{
+    ViewBag.Title = "AddEdit";
+}
+
+<br />
+<br />
+<br />
+<br />
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.CITYID)
+
+        <div class="row">
+            <div class=" form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.CITYCODE)
+                </div>
+                <div class="col-sm-4">
+                    @Html.EditorFor(model => model.CITYCODE, new { htmlAttributes = new { @class = "form-control" }, })
+                    @Html.ValidationMessageFor(mode => Model.CITYCODE)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.CITY_NAME)
+                </div>
+                <div class="col-sm-4">
+                    @Html.EditorFor(model => model.CITY_NAME, new { htmlAttributes = new { @class = "form-control" }, })
+                    @Html.ValidationMessageFor(mode => Model.CITY_NAME)
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-sm-2"></div>
+            <input type="submit" value="Submit" class="btn btn-success btn-sm" />
+            <a href="@Url.Action("Index","City")" class="btn btn-default btn-sm">Back To List</a>
+
+        </div>
+    }
+
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}

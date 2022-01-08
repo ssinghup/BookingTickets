@@ -1,0 +1,101 @@
+﻿@model BookingTickets.Models.BOOKED_TICKET
+
+
+
+@{
+    ViewBag.Title = "BookFlight";
+}
+<style>
+    #rowContainer {
+        margin-left: 30%;
+        border-radius: 2px;
+        background-color: #fff;
+        padding: 15px;
+    }
+</style>
+@if (ViewBag.Message != null)
+{
+<script type="text/javascript">
+window.onload = function () {
+alert("@ViewBag.Message");
+};
+</script>
+}
+<div class="page-section bg-light" style="padding-top:25px;">
+    <div class="container">
+        @using (Html.BeginForm("BookFlight", "BookFlight", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <div class="col-md-6" id="rowContainer">
+                <h5><b>Please Fill Personal Details</b></h5>
+                <hr />
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.FLIGHT_ID)
+                    @Html.HiddenFor(model => model.FROMCITYID)
+                    @Html.HiddenFor(model => model.TOCITYID)
+                    @Html.HiddenFor(model => model.TIME_ID)
+                    @Html.HiddenFor(model => model.BOOKING_DT)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PERSON_NAME, "Full Name", htmlAttributes: new { @class = "control-label col-md-10" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PERSON_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PERSON_NAME, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PERSON_AGE, "Age", htmlAttributes: new { @class = "control-label col-md-10" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PERSON_AGE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PERSON_AGE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PERSON_EMAIL, "Email Address", htmlAttributes: new { @class = "control-label col-md-10" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PERSON_EMAIL, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PERSON_EMAIL, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PERSON_MOBILE, "Mobile Number", htmlAttributes: new { @class = "control-label col-md-10" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.PERSON_MOBILE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PERSON_MOBILE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.BOOKED_FARE, "Fare", htmlAttributes: new { @class = "control-label col-md-10" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.BOOKED_FARE, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.BOOKED_FARE, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn text-white btn-block btn-primary" id="btnSearch" style="background-color: dodgerblue;border-radius:0rem;">Book Ticket</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a id="backtoList">Back To List</a>
+            </div>
+        }
+    </div>
+</div>

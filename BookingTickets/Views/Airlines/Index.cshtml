@@ -1,0 +1,56 @@
+﻿@model IEnumerable<BookingTickets.Models.FLIGHT_COMPANY>
+
+@{
+    ViewBag.Title = "Airlines";
+}
+
+<br />
+<p>
+    <a href="@Url.Action("AddEdit","Airlines")" class="btn btn-success btn-sm">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="bg-primary">
+        <tr>           
+            <th>
+                @Html.DisplayNameFor(model => model.COMPANY_NAME)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.COMPANY_NAME)
+            </td>
+            <td>
+                <a href="@Url.Action("AddEdit","Airlines",new { id=item.CMPANYID})" class="btn btn-default"> <i class="fa fa-pencil"></i>Edit</a>
+                <a onclick="Delete(@item.CMPANYID)" class="btn btn-default"><i class="fa fa-trash"></i>Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@section scripts{
+    <script>
+        $(function () {
+            var res = '@TempData["Response"]'
+            if (res != '')
+                alertify.success(res);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Web Api Delete Operations', 'Are you Sure to Delete this Records ?', function ()
+            {
+                window.location.href = '@Url.Action("Delete", "Airlines")/' + id;
+            }, null);
+
+        }
+    </script>
+}
+
+

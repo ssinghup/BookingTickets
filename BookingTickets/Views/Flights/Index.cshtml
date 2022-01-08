@@ -1,0 +1,68 @@
+﻿@model IEnumerable<BookingTickets.Models.Flights>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<p>
+    <a href="@Url.Action("AddEdit","Flights")" class="btn btn-success btn-sm">Create New</a>
+</p>
+<table class="table table-striped">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FLIGHT_CODE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FLIGHT_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COMPANY_NAME)
+            </th>
+
+            <th>Actions</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FLIGHT_CODE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FLIGHT_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FLIGHT_COMPANY.COMPANY_NAME)
+            </td>
+
+            <td>
+                <a href="@Url.Action("AddEdit","Flights",new { id=item.FLIGHTID,CityId=item.COMPANY_ID})" class="btn btn-default"> <i class="fa fa-pencil"></i>Edit</a>
+
+                <a href="@Url.Action("AddEdit","Flights",new { id=item.FLIGHTID})" class="btn btn-default"> <i class="fa fa-pencil"></i>Edit</a>
+                <a onclick="Delete(@item.FLIGHTID)" class="btn btn-default"><i class="fa fa-trash"></i>Delete</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+@section scripts{
+    <script>
+        $(function () {
+            var res = '@TempData["Response"]'
+            if (res != '')
+                alertify.success(res);
+        });
+
+        function Delete(id) {
+            alertify.confirm('Web Api Delete Operations', 'Are you Sure to Delete this Records ?', function ()
+            {
+                window.location.href = '@Url.Action("Delete", "Airlines")/' + id;
+            }, null);
+
+        }
+    </script>
+}

@@ -1,0 +1,92 @@
+﻿@model IEnumerable<BookingTickets.Models.VM_TICKET_BOOKED>
+
+@{
+    ViewBag.Title = "Booking Details";
+}
+
+<h2>Booking Details</h2>
+
+
+<table class="table table-striped">
+    <thead class="bg-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.COMPANY_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FLIGHT_CODE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FLIGHT_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BOOKING_DATE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FROM_CITYNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TO_CITYNAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PERSON_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PERSON_AGE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PERSON_EMAIL)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PERSON_MOBILE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BOOKED_FARE)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.COMPANY_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FLIGHT_CODE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FLIGHT_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BOOKING_DATE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FROM_CITYNAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TO_CITYNAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PERSON_NAME)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PERSON_AGE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PERSON_EMAIL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PERSON_MOBILE)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BOOKED_FARE)
+                </td>
+
+
+            </tr>
+        }
+
+</table>

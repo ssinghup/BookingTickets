@@ -1,0 +1,77 @@
+﻿@model BookingTickets.Models.Flights
+@{
+    ViewBag.Title = "AddEdit";
+}
+
+<br />
+<br />
+<br />
+<br />
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+
+        @Html.HiddenFor(model => model.FLIGHTID)
+
+        <div class="row">
+            <div class=" form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.FLIGHT_CODE)
+                </div>
+                <div class="col-sm-4">
+                    @Html.EditorFor(model => model.FLIGHT_CODE, new { htmlAttributes = new { @class = "form-control" }, })
+                    @Html.ValidationMessageFor(mode => Model.FLIGHT_CODE)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.FLIGHT_NAME)
+                </div>
+                <div class="col-sm-4">
+                    @Html.EditorFor(model => model.FLIGHT_NAME, new { htmlAttributes = new { @class = "form-control" }, })
+                    @Html.ValidationMessageFor(mode => Model.FLIGHT_NAME)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class=" form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.COMPANY_NAME)
+                </div>
+                <div class="col-sm-4">
+                    @Html.DropDownList("COMPANY_ID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(mode => Model.COMPANY_ID)
+                </div>
+            </div>
+        </div>
+                <div class="row">
+            <div class=" form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(model => model.ACTIVE)
+                </div>
+                <div class="col-sm-4">
+                    @Html.DropDownListFor(model => model.ACTIVE, new List<SelectListItem>
+    {
+                        new SelectListItem() {Text = "Active", Value="1"},
+                        new SelectListItem() {Text = "In-Active", Value="0"},
+    }, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(mode => Model.ACTIVE)
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-3"></div>
+                <input type="submit" value="Submit" class="btn btn-success btn-sm" />
+                <a href="@Url.Action("Index","Flights")" class="btn btn-default btn-sm">Back To List</a>
+            </div>
+        </div>
+    }
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval");
+}
